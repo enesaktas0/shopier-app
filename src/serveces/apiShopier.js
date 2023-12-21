@@ -1,24 +1,12 @@
-const BASE_TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0NTA2ZjA5YjFhY2U1MGRkMTc2NzdkMmYwZTgzZWM0MSIsImp0aSI6ImFlMGY1YjMwOGJiZjViZWNhNTE3YjFmNGY0YzRlM2UwMmRlMWM2MjlkYWRkN2UyYjRjNWEwYTg3MzI5MThlNTAzZDY1YTg2ODRhZTYwMDE2MGQ3ZTM2NmE0NWU1YjNmOTk3OWJmMGU0ZjkzYmY3NWRmYmJlMDdkNjIzOGZiN2VkYzM1MGViMGRhZmRmOWMxMzYxMGM5OGY5ZGFmZjRiZGYiLCJpYXQiOjE3MDMwMTYxNTAsIm5iZiI6MTcwMzAxNjE1MCwiZXhwIjoxODYwODAwOTEwLCJzdWIiOiI1OTQ2NjMiLCJzY29wZXMiOlsib3JkZXJzOnJlYWQiLCJvcmRlcnM6d3JpdGUiLCJwcm9kdWN0czpyZWFkIiwicHJvZHVjdHM6d3JpdGUiLCJzaGlwcGluZ3M6cmVhZCIsInNoaXBwaW5nczp3cml0ZSIsImRpc2NvdW50czpyZWFkIiwiZGlzY291bnRzOndyaXRlIiwicGF5b3V0czpyZWFkIiwicmVmdW5kczpyZWFkIiwicmVmdW5kczp3cml0ZSIsInNob3A6cmVhZCIsInNob3A6d3JpdGUiXX0.WRYymIEzs1mzi2BmYJyU-iCovs6atTJI7tifc474P4hBlujf62NZDBLYJSx7pxLo6zWF9NxSgCcIr6beu7xEgjkmV3LWvV_o8lm8S-YiLLb4SEmlQOAEcX_KK_0dWgDoSWsuGfq_DELAwF7bMLoBb8Yax1kokp4Ya8yoHWKy9IYdT-kCFuZxTW8GdyLh-fE9MImuLPiAZ2Pb4wgXbgN5pyBBU6j9qFZtJYU4UZPEu3bkdB-vTwCifh6_B8PM_ur_ceck3gE4PrCe1Nd7MfONen7ZmRuSHOyeYRFY0wvUtAJAXN6ID4ywTAepeyQnTQ3-AUeksfRCXBlpnuiBbjamvg";
+export async function getAllProducts() {
+  try {
+    const response = await fetch('http://localhost:8080/list-all-products');
+    const data = await response.json();
 
-export function getAllProducts() {
-  const options = {
-    method: "GET",
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Credentials": true,
-      "Access-Control-Allow-Headers": "Content-Type",
-      accept: "application/json",
-      authorization:
-        "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0NTA2ZjA5YjFhY2U1MGRkMTc2NzdkMmYwZTgzZWM0MSIsImp0aSI6IjllMDNkNDhmMjg3NTc2ZGYxZDk2MjA2MDNhYjZjYzlmZjYyODYzYzhkNzYwMTY0OWIyNGU5Y2FiNmQzZDQ1NWE5ZWIwYjdmYWU5ZjcxY2M5NTU1OTA3YzJjZjQ5OTUyYzNiZWUwMjFhMmYwMmVjMmIwNTUzZTYzYWQ3NTQ4ODc3NTY1MWRmODdkOTMyNTBjYmEwNmU3ZjMwZTA5YmNmODAiLCJpYXQiOjE3MDI2NTUzOTYsIm5iZiI6MTcwMjY1NTM5NiwiZXhwIjoxODYwNDQwMTU2LCJzdWIiOiI1OTQ2NjMiLCJzY29wZXMiOlsib3JkZXJzOnJlYWQiLCJvcmRlcnM6d3JpdGUiLCJwcm9kdWN0czpyZWFkIiwicHJvZHVjdHM6d3JpdGUiLCJzaGlwcGluZ3M6cmVhZCIsInNoaXBwaW5nczp3cml0ZSIsImRpc2NvdW50czpyZWFkIiwiZGlzY291bnRzOndyaXRlIiwicGF5b3V0czpyZWFkIiwicmVmdW5kczpyZWFkIiwicmVmdW5kczp3cml0ZSIsInNob3A6cmVhZCIsInNob3A6d3JpdGUiXX0.iT1tolpoUpn2hKK_JeBMUJrB45YLOpJr5iT45QbZUilhaQE6iX6lJ9RRjxya_IfKZHIATC6NgyfoOWYUpRhmP7VAm0eqSIsMms6RVUC5o3DXQmPkRzcmT9xUyRxEsoKyiRWW43zc8dupuiHdvoUutzi9YWAVcKlW62QjVv6pQAr-dYtYwAPN-mH-J8dDfAdJiSutqTcTrl5kG_aY9cPafq_9xyIsH6uHLB6GjdUV-LttHfYayDCecnhFLbWOgyI1_SnHFxjEIe5nAgXUbuZBuuyAOIYVWuiiE0SiR77dajXgkcyWgjF8km_LYtgqk7Mt4ph68m76xuczKjxXkE5E1Q",
-    },
-  };
-
-  fetch(
-    "https://api.shopier.com/v1/products?limit=10&page=1&sort=dateDesc",
-    options,
-  )
-    .then((response) => response.json())
-    .then((response) => console.log(response))
-    .catch((err) => console.error(err));
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
 }
+
+export async function getALLCategories() {}

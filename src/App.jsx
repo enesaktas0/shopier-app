@@ -1,24 +1,33 @@
-import React from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React, { useEffect } from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import Home from "./pages/Home";
-import Users from "./pages/Users";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import Products from "./pages/Products";
+import Home from './pages/Home';
+import Users from './pages/Users';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import Products from './pages/Products';
+import { getALLCategories } from './serveces/apiShopier';
+import AppLayout from './ui/AppLayout';
+import Error from './ui/Error';
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/users",
-    element: <Users />,
-  },
-  {
-    path: "/products",
-    element: <Products />,
+    element: <AppLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      },
+      {
+        path: '/users',
+        element: <Users />,
+      },
+      {
+        path: '/products',
+        element: <Products />,
+      },
+    ],
   },
 ]);
 
