@@ -1,8 +1,28 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { getAllProducts } from '../serveces/apiShopier';
+import { useQuery } from '@tanstack/react-query';
+import ProductItem from '../features/products/ProductItem';
+import Spinner from '../ui/Spinner';
 
 export default function Home() {
-  return <div>
-    <Link to='/products'>Product</Link>
-  </div>;
+  const {
+    data: products,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ['products'],
+    queryFn: getAllProducts,
+  });
+
+  if (isLoading) return <Spinner />;
+
+  return (
+    <div>
+      <ul className="flex flex-wrap justify-center gap-6">
+        {products.map((product) => {
+          return <ProductItem product={product} key={product.id} />;
+        })}
+      </ul>
+    </div>
+  );
 }

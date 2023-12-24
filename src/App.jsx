@@ -9,6 +9,7 @@ import Products from './pages/Products';
 import { getALLCategories } from './serveces/apiShopier';
 import AppLayout from './ui/AppLayout';
 import Error from './ui/Error';
+import Categories from './pages/categories';
 
 const router = createBrowserRouter([
   {
@@ -24,8 +25,12 @@ const router = createBrowserRouter([
         element: <Users />,
       },
       {
-        path: '/products',
+        path: '/products/:id',
         element: <Products />,
+      },
+      {
+        path: '/categories',
+        element: <Categories />,
       },
     ],
   },
