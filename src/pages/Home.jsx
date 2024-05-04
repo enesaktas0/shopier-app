@@ -3,6 +3,7 @@ import { getAllProducts } from '../serveces/apiShopier';
 import { useQuery } from '@tanstack/react-query';
 import ProductItem from '../features/products/ProductItem';
 import Spinner from '../ui/Spinner';
+import ScroolBar from '../features/scrooling/ScroolBar';
 
 export default function Home() {
   const {
@@ -18,7 +19,8 @@ export default function Home() {
 
   return (
     <div>
-      <ul className="flex flex-wrap justify-center gap-6">
+      <ScroolBar />
+      <ul className="flex flex-wrap justify-center gap-14">
         {products.map((product) => {
           return <ProductItem product={product} key={product.id} />;
         })}

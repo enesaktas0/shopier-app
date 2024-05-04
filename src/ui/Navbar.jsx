@@ -4,7 +4,7 @@ import Menu from './Menu';
 
 export default function Navbar() {
   return (
-    <nav className="bg-red-600 p-8 text-stone-50">
+    <nav className="bg-white p-8 text-gray-900 shadow-lg">
       <div className="mx-auto flex max-w-5xl items-center justify-between">
         <Logo />
         <Menu />
